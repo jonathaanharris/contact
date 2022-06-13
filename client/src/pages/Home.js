@@ -35,8 +35,8 @@ const Home = () => {
               <h5 className="card-title">{el.Name}</h5>
               <h6 className="card-subtitle mb-2 text-muted">{el.PhoneNumber}</h6>
               <div>
-                <button className='btn btn-secondary mx-1' onClick={() => detailHandler(el.ID)}> see detail</button>
-                <button className='btn btn-danger' onClick={() => deleteHandler(el.ID)}>delete</button>
+                <button className='btn btn-secondary mx-1' onClick={() => detailHandler(el.ID)}> See Detail</button>
+                <button className='btn btn-danger' onClick={() => deleteHandler(el.ID)}>Delete</button>
               </div>
             </div>
           </div>

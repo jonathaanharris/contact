@@ -16,19 +16,31 @@ const Detail = () => {
     return el.ID == id
   })
 
-  console.log(contact)
 
-  const [name, setName] = useState(contact.Name)
-  const [phoneNumber, setPhoneNumber] = useState(contact.PhoneNumber)
-  const [email, setEmail] = useState(contact.Email)
+  const [name, setName] = useState(contact?.Name ? contact.Name : "")
+  const [phoneNumber, setPhoneNumber] = useState(contact?.PhoneNumber ? contact.PhoneNumber : "")
+  const [email, setEmail] = useState(contact?.Email ? contact.Email : "")
 
   useEffect(() => {
     dispatch(fetchAll())
   }, [])
 
+  const homeHandler = () => {
+    navigate('/')
+  }
+
 
   if (contacts.length === 0) {
     return <div>loading</div>
+  }
+
+  if (!contact) {
+    return <div>
+      <p class="text-uppercase">data not found</p>
+      <button type='button' className="btn btn-secondary mx-2" onClick={homeHandler}>Back to Home</button>
+
+    </div >
+
   }
 
   const nameHandler = (e) => {
@@ -45,9 +57,7 @@ const Detail = () => {
     setEmail(e.target.value)
   }
 
-  const homeHandler = () => {
-    navigate('/')
-  }
+
   const submitHandler = (e) => {
     e.preventDefault();
     let payload = { Name: name, PhoneNumber: phoneNumber, Email: email }
@@ -77,7 +87,7 @@ const Detail = () => {
 
     <div className='container' >
       <form onSubmit={submitHandler}>
-        <h4>Add a Contact</h4>
+        <h4>Update Contact</h4>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input value={name} type="text" className="form-control" id="name" aria-describedby="emailHelp" onChange={nameHandler} />
