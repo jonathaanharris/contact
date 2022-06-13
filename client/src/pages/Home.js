@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteContact, fetchAll } from '../store/action/contactAction'
 import { useNavigate } from 'react-router-dom';
+import swal from "sweetalert"
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -16,7 +17,10 @@ const Home = () => {
   }
   const deleteHandler = (id) => {
     dispatch(deleteContact(id))
-      .then(data => dispatch(fetchAll()))
+      .then(data => {
+        swal("successfully deleted")
+        return dispatch(fetchAll())
+      })
   }
   const addHandler = () => {
     navigate('/addcontact')

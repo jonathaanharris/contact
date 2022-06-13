@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchContact } from '../store/action/contactAction'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { addContact } from '../store/action/contactAction';
 import swal from "sweetalert"
